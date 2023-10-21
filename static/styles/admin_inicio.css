@@ -1,0 +1,250 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+html {
+  font-size: 62.5%;
+  color: rgb(236, 230, 230);
+  font-family: "Roboto", sans-serif;
+  overflow-x: hidden;
+  background-color: #171717;
+}
+body {
+  font-family: "Roboto", sans-serif;
+}
+input {
+  display: block;
+  background-color: rgb(236, 230, 230);
+  border: none;
+}
+input:focus {
+  outline: none;
+}
+
+body,
+html {
+  height: 100%;
+}
+
+.hide {
+  display: none !important;
+}
+
+.main-container {
+  display: flex;
+  justify-content: center;
+}
+
+.menu-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 40rem;
+  padding: 2rem;
+  padding-bottom: 8rem;
+  padding-top: 4rem;
+}
+
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.logout-button {
+  border: none;
+  background-color: inherit;
+  color: white;
+  font-size: 2.4rem;
+  padding: 1rem;
+  padding-top: 0.5rem;
+  margin-right: 0.5rem;
+  align-self: flex-start;
+}
+
+.logout-button:hover {
+  cursor: pointer;
+}
+
+.menu-title {
+  font-size: 3.6rem;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+}
+
+.menu-excel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 8rem;
+}
+
+.subir-excel-text-container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+}
+
+input#select-excel {
+  display: none;
+}
+
+input#select-excel + label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 75%;
+  height: 100%;
+  font-weight: 500;
+  font-size: 2rem;
+  background-color: green;
+  padding: 2rem 4rem;
+  border-radius: 17px;
+}
+
+input#select-excel + label:hover {
+  cursor: pointer;
+}
+
+input#submit {
+  display: none;
+}
+
+input#submit + label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20%;
+  height: 100%;
+  font-weight: 500;
+  font-size: 2rem;
+  background-color: green;
+  opacity: 0.7;
+  padding: 3rem 4rem;
+  border-radius: 17px;
+}
+
+input#submit + label:hover {
+  cursor: pointer;
+}
+
+.btn-available {
+  opacity: 1 !important;
+  background-color: rgb(0, 177, 0) !important;
+  /* background-color: white !important; */
+}
+
+.excel-icon {
+  font-size: 2rem;
+}
+
+.menu-subtitle {
+  text-align: center;
+  font-size: 4rem;
+  font-weight: 500;
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+}
+
+.confirmed-num {
+  color: #4af71188;
+}
+.non-confirmed-num {
+  color: #f0841fb1;
+}
+.rejected-num {
+  color: #f82727aa;
+}
+
+.search-input-container {
+  padding-bottom: 1rem;
+}
+
+.search-input {
+  width: 100%;
+  padding: 2rem 3rem;
+  border-radius: 17px;
+  font-size: 1.8rem;
+}
+
+.invitation-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.invitation-li {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  border-radius: 17px;
+  padding: 2rem;
+  background-color: #ffffff22;
+}
+
+.invitation-li-name,
+.invitation-li-name--input {
+  font-size: 1.8rem;
+  width: 40%;
+}
+
+.invitation-li-name--input {
+  display: none;
+  padding: 1rem 2rem;
+}
+
+.modify-invitation-container {
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+  gap: 1.6rem;
+  width: 20%;
+}
+
+.confirm-update-button {
+  display: none;
+  background-color: purple;
+}
+.cancel-update-button {
+  display: none;
+  background-color: purple;
+}
+
+.invitation-data {
+  justify-self: center;
+  display: flex;
+  justify-content: center;
+  font-size: 2rem;
+  width: 40%;
+  gap: 2rem;
+}
+
+.invitation-icon {
+  font-size: 2rem;
+  text-align: center;
+  margin-right: 0.5rem;
+}
+
+.invitation-data--input {
+  display: none;
+  width: 50%;
+  /* padding: 1rem 3rem; */
+  padding: 1rem 0.2rem;
+  font-size: 2rem;
+}
+
+.gap-zero {
+  gap: 0 !important;
+}
+
+.invitation-confirmed {
+  background-color: #4af71188;
+}
+.invitation-rejected {
+  background-color: #f8272788;
+}

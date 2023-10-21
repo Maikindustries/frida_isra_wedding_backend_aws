@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      src="{{ url_for('static', filename='logic/admin_inicio.js') }}"
+      defer
+    ></script>
+    <script src="../static/logic/admin_inicio.js" defer></script>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/admin_inicio.css') }}"
+    />
+    <!-- Borrar -->
+    <link rel="stylesheet" href="../static/styles/admin_inicio.css" />
+    <!-- Borrar -->
+    <script
+      src="https://kit.fontawesome.com/bbd366d908.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <title>Inicio</title>
+  </head>
+  <body>
+    <main class="main-container">
+      <div class="menu-container">
+        <div class="menu-header">
+          <h1 class="menu-title">Invitados</h1>
+          <button
+            class="logout-button"
+            onclick="window.location = 'logout'"
+            type="submit"
+          >
+            <i class="fa-solid fa-right-from-bracket"></i>
+          </button>
+        </div>
+        <form
+          action="excel"
+          method="post"
+          enctype="multipart/form-data"
+          class="menu-excel"
+        >
+          <input
+            id="select-excel"
+            class="upload-excel-button"
+            type="file"
+            name="uploaded-file"
+            accept=".csv, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel"
+          />
+          <label for="select-excel"
+            ><div class="subir-excel-text-container" excelButton>
+              <p>Subir excel</p>
+              <i class="fa-solid fa-plus excel-icon"></i>
+            </div>
+            <span id="file-name"></span
+          ></label>
+          <input id="submit" type="submit" />
+          <label for="submit" enviarButton>
+            <p>Enviar</p>
+          </label>
+        </form>
+
+        <p class="menu-subtitle">
+          <span class="confirmed-num" confirmedNum>0</span>
+          <span class="non-confirmed-num" notConfirmedNum>0</span>
+          <span class="rejected-num" rejectedNum>0</span>
+        </p>
+        <div class="search-input-container">
+          <input
+            class="search-input"
+            type="text"
+            placeholder="Nombre"
+            data-search
+          />
+        </div>
+
+        <div class="invitation-content" invited-people-li-container></div>
+      </div>
+    </main>
+
+    <template invited-people-template>
+      <div class="invitation-li">
+        <p class="invitation-li-name" data-name></p>
+        <input class="invitation-li-name--input" type="text" nameInput />
+        <div class="modify-invitation-container">
+          <button updateButton>
+            <i class="fa-solid fa-pen"></i>
+          </button>
+          <button deleteButton onclick="verifyDelete();">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+          <button confirmUpdateButton class="confirm-update-button">
+            <i class="fa-solid fa-pen"></i>
+          </button>
+          <button cancelUpdateButton class="cancel-update-button">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+        <p class="invitation-data" invitationData>
+          <span
+            ><i class="fa-solid fa-chair invitation-icon"></i
+            ><span data-table></span>
+            <input type="text" class="invitation-data--input" tableInput />
+          </span>
+
+          <span
+            ><i class="fa-solid fa-person invitation-icon"></i
+            ><span data-persons></span>
+            <input type="text" class="invitation-data--input" ticketsInput />
+          </span>
+        </p>
+      </div>
+    </template>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

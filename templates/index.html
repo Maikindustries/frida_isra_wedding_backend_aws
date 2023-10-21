@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Boda Frida & Isra</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous"
+    />
+    <!-- <link rel="stylesheet" href="styles.css" /> -->
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/index.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='styles/queries.css') }}"
+    />
+    <!-- <link rel="stylesheet" href="queries.css" /> -->
+    <!-- <script src="index.js"></script> -->
+    <script src="{{ url_for('static', filename='logic/index.js') }}"></script>
+    <script
+      src="https://kit.fontawesome.com/bbd366d908.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <main class="main">
+      <!-- Section hero -->
+      <section class="hero-section">
+        <div class="hero-container">
+          <div class="hero-text-container">
+            <h2>Nuestra boda</h2>
+            <h1>FRIDA & ISRAEL</h1>
+            <!-- <div class="hero-text-description-container"> -->
+            <p>Eclésiastes 4:9-12</p>
+            <!-- </div> -->
+          </div>
+          <div
+            id="carouselExampleFade"
+            class="carousel slide carousel-fade carousel-container"
+            data-bs-ride="carousel"
+          >
+            <div class="carousel-inner">
+              <div class="carousel-item active" data-interval="1">
+                <img
+                  src="../static/images/horizontal/photo_4.jpg"
+                  class="d-block w-100 img-fluid carousel-img"
+                />
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="../static/images/horizontal/photo_3.jpg"
+                  class="d-block w-100 img-fluid carousel-img"
+                />
+              </div>
+              <div class="carousel-item">
+                <img
+                  src="../static/images/horizontal/photo_1.jpg"
+                  class="d-block w-100 img-fluid carousel-img"
+                />
+              </div>
+            </div>
+            <!-- <button
+            class="carousel-control-prev"
+            type="button"
+            data-bs-target="#carouselExampleFade"
+            data-bs-slide="prev"
+            >
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExampleFade"
+          data-bs-slide="next"
+          >
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button> -->
+          </div>
+        </div>
+      </section>
+      <!-- Sobre nosotros -->
+      <section class="section about-us-section">
+        <div class="container about-us-section-container">
+          <img
+            src="../static/images/vertical/photo_19.jpg"
+            class="about-us-img"
+          />
+          <div class="about-us-text-container">
+            <!-- <div> -->
+            <h2>¡Nos casamos!</h2>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Optio,
+              similique. Accusamus delectus doloribus fugit qui vero est, aut
+              molestias excepturi, dolorem nam odit quia, quod corporis corrupti
+              omnis tempora consequuntur.
+            </p>
+            <!-- </div> -->
+            <!-- <img src="../static/images/horizontal/photo_8.jpg" /> -->
+          </div>
+        </div>
+      </section>
+      <!-- Confirmar asistencia -->
+      <section
+        id="section-confirm-assistance"
+        class="section section-confirm-assistance"
+      >
+        <div class="container">
+          <div class="title-container">
+            <h2 class="title--text">Confirmación</h2>
+            <h2 id="c-a-subtitle" class="subtitle--text">
+              <span c-a-guest-name>nombre</span>, nos ayudarías mucho que
+              confirmes tu asistencia
+            </h2>
+          </div>
+          <div id="c-a-select-confirmation-container">
+            <div class="c-a-select-checkbox-container">
+              <p>NO ASISTIRE</p>
+              <input
+                id="c-a-select-checkbox"
+                type="checkbox"
+                checked
+                class="c-a-checkbox"
+                style="--s: 30px"
+              />
+              <p>ASISTIRÉ</p>
+            </div>
+            <div class="c-a-button">
+              <button onclick="sendAssistance()">
+                <p>Confirmar</p>
+              </button>
+            </div>
+          </div>
+          <div
+            id="confirmationContainer"
+            class="c-a-confirmation-container"
+            style="display: none"
+          >
+            <p>
+              <span id="confirmationName"></span>, has confirmado tu asistencia
+            </p>
+            <div class="c-a-button">
+              <button onclick="changeAssistance()">Cambiar asistencia</button>
+            </div>
+          </div>
+          <div
+            id="rejectionContainer"
+            class="c-a-rejection-container"
+            style="display: none"
+          >
+            <p>
+              <span id="rejectcionName"></span>, has rechazado tu asistencia
+            </p>
+            <div class="c-a-button">
+              <button onclick="changeAssistance()">Cambiar decisión</button>
+            </div>
+          </div>
+        </div>
+      </section>
+      <script>
+        const checkbox = document.getElementById("c-a-select-checkbox");
+        const selectConfirmationContainer = document.getElementById(
+          "c-a-select-confirmation-container"
+        );
+        const confirmationContainer = document.getElementById(
+          "confirmationContainer"
+        );
+        const rejectionContainer =
+          document.getElementById("rejectionContainer");
+        const subtitle = document.getElementById("c-a-subtitle");
+
+        function sendAssistance() {
+          console.log(checkbox.checked);
+          selectConfirmationContainer.style.display = "none";
+          subtitle.style.display = "none";
+          let confirmacion = "";
+          if (checkbox.checked) {
+            confirmationContainer.style.display = "";
+            rejectionContainer.style.display = "none";
+            confirmacion = "confirmada";
+          } else {
+            confirmationContainer.style.display = "none";
+            rejectionContainer.style.display = "";
+            confirmacion = "no vendra";
+          }
+          const queryString = window.location.search;
+          const urlParams = new URLSearchParams(queryString);
+          const id = urlParams.get("id");
+          console.log(id);
+          let _datos = {
+            id: id,
+            confirmacion: confirmacion,
+          };
+
+          fetch(
+            "http://frida-isra-boda.us-east-1.elasticbeanstalk.com/guest/updateConfirmation",
+            {
+              method: "POST",
+              body: JSON.stringify(_datos),
+              headers: { "Content-type": "application/json; charset=UTF-8" },
+            }
+          )
+            .then((response) => response.json())
+
+            .then((json) => console.log(json));
+        }
+        function changeAssistance() {
+          selectConfirmationContainer.style.display = "";
+          subtitle.style.display = "";
+          confirmationContainer.style.display = "none";
+          rejectionContainer.style.display = "none";
+        }
+        function getGuestInfo() {
+          const queryString = window.location.search;
+          const urlParams = new URLSearchParams(queryString);
+          const id = urlParams.get("id");
+          console.log("id", id);
+          if (id === null || id === undefined || id.length != 32) {
+            const confirmationSection = document.getElementById(
+              "section-confirm-assistance"
+            );
+            confirmationSection.style.display = "none";
+            return;
+            // dont do fetch
+          }
+          fetch(
+            `http://frida-isra-boda.us-east-1.elasticbeanstalk.com/guest/${id}`,
+            {
+              method: "GET",
+              headers: {
+                Accept: "application/json",
+              },
+            }
+          )
+            .then((response) => response.json())
+            .then((guest) => {
+              const guestName = document.querySelector("[c-a-guest-name]");
+              const confirmationName =
+                document.getElementById("confirmationName");
+              const rejectcionName = document.getElementById("rejectcionName");
+
+              guestName.innerHTML = guest.nombre;
+              confirmationName.innerHTML = guest.nombre;
+              rejectcionName.innerHTML = guest.nombre;
+
+              if (guest.confirmacion == "confirmada") {
+                subtitle.style.display = "none";
+                confirmationContainer.style.display = "";
+                rejectionContainer.style.display = "none";
+                selectConfirmationContainer.style.display = "none";
+              } else if (guest.confirmacion == "no vendra") {
+                subtitle.style.display = "none";
+                confirmationContainer.style.display = "none";
+                rejectionContainer.style.display = "";
+                selectConfirmationContainer.style.display = "none";
+              } else {
+                // "no revisada"
+                console.log("no revisada");
+                confirmationContainer.style.display = "none";
+                rejectionContainer.style.display = "none";
+                selectConfirmationContainer.style.display = "";
+              }
+            });
+        }
+        getGuestInfo();
+      </script>
+
+      <!-- Contador -->
+      <section class="section countdown">
+        <div class="container">
+          <div class="title-container">
+            <h2 class="title--text">Te esperamos en nuestra boda</h2>
+            <h2 class="countdown--date">21 de abril 2023</h2>
+          </div>
+          <div class="countdown-clock--container">
+            <div class="countdown-clock--item--border">
+              <div class="countdown-clock--item">
+                <h2 id="days" class="countdown-clock--item--date">00</h2>
+                <p>Días</p>
+              </div>
+            </div>
+            <div class="countdown-clock--item--border">
+              <div class="countdown-clock--item">
+                <h2 id="hours" class="countdown-clock--item--date">00</h2>
+                <p>Horas</p>
+              </div>
+            </div>
+            <div class="countdown-clock--item--border">
+              <div class="countdown-clock--item">
+                <h2 id="minutes" class="countdown-clock--item--date">00</h2>
+                <p>Minutos</p>
+              </div>
+            </div>
+            <div class="countdown-clock--item--border">
+              <div class="countdown-clock--item">
+                <h2 id="seconds" class="countdown-clock--item--date">00</h2>
+                <p>Segundos</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Galeria lineal vertical -->
+      <section
+        id="gallery-section-vertical"
+        gallery-section-vertical
+        class="gallery-section"
+      >
+        <img src="../static/images/vertical/photo_12.jpg" class="gallery-img" />
+        <img src="../static/images/vertical/photo_13.jpg" class="gallery-img" />
+        <img src="../static/images/vertical/photo_19.jpg" class="gallery-img" />
+        <img src="../static/images/vertical/photo_14.jpg" class="gallery-img" />
+        <img src="../static/images/vertical/photo_15.jpg" class="gallery-img" />
+        <img src="../static/images/vertical/photo_16.jpg" class="gallery-img" />
+      </section>
+
+      <!-- Ubicacion -->
+      <section class="section location-section">
+        <div class="container">
+          <div class="title-container">
+            <h2 class="title--text">Ubicación</h2>
+          </div>
+          <div class="location-info">
+            <div class="location-info-container">
+              <div class="location-info-text">
+                <p class="location-info--title">Ceremonia y Fiesta</p>
+                <p class="location-info--date">Domingo 21 de Abril</p>
+                <div class="location-info-text-icon-container">
+                  <i class="fa-regular fa-clock"></i>
+                  <p class="location-info--time">02:00 pm - 10:00 pm</p>
+                </div>
+                <div class="location-info-text-icon-container">
+                  <i class="fa-solid fa-location-dot"></i>
+                  <p class="location-info--name">Jardin Quinta Corregidor</p>
+                </div>
+                <!-- <div class="location-info-adress-container"> -->
+                <p class="location-info--address">
+                  Diag. Reforma 3 B, Izcalli del Bosque,53278 Naucalpan de
+                  Juárez, Méx.
+                </p>
+                <!-- </div> -->
+              </div>
+
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3761.496125115911!2d-99.25922472402088!3d19.477279639250945!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d203752a161929%3A0x409f84a48380d802!2sJardin%20Quinta%20Corregidor!5e0!3m2!1ses!2smx!4v1696386896843!5m2!1ses!2smx"
+                height="350"
+                class="location-map-iframe"
+                allowfullscreen=""
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+              ></iframe>
+            </div>
+            <div class="location-map-button">
+              <button
+                onclick="window.open('http://goo.gl/maps/WbekMxVqSfBBnx2j9','_blank')"
+              >
+                <p>Abrir en mapa</p>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Mesa de regalos -->
+      <section class="section mesa-de-regalos">
+        <div class="container">
+          <div class="title-container" style="padding-bottom: 0">
+            <h2 class="title--text">Mesa de regalos</h2>
+            <p class="subtitle--text">
+              Tu presencia es nuestro mayor regalo, pero si deseas obsequiarnos
+              algo te adjuntamos algunas opciones:
+            </p>
+          </div>
+          <div class="mesa-de-regalos--opciones">
+            <a
+              class="mesa-de-regalos-item amazon"
+              href="https://www.amazon.com.mx/wedding/share/FriIsra21042024"
+              target="_blank"
+            >
+              <div class="mesa-de-regalos-item--img-container">
+                <img
+                  src="../static/images/amazon_logo.png"
+                  class="mesa-de-regalos-item--img"
+                  alt="amazon"
+                />
+                <p style="font-size: 3rem; color: blue">Ver el carrito</p>
+              </div>
+            </a>
+            <a
+              class="mesa-de-regalos-item liverpool"
+              href="http://www.liverpool.com.mx/"
+              target="_blank"
+            >
+              <div class="mesa-de-regalos-item--img-container">
+                <img
+                  src="../static/images/liverpool_logo.png"
+                  class="mesa-de-regalos-item--img"
+                  alt="liverpool"
+                />
+                <p style="font-size: 3rem; color: blue">
+                  Ver la mesa de regalos
+                </p>
+              </div>
+            </a>
+            <a
+              class="mesa-de-regalos-item banorte"
+              href="http://www.banorte.com/"
+              target="_blank"
+            >
+              <div class="mesa-de-regalos-item--img-container">
+                <img
+                  src="../static/images/banorte_logo.png"
+                  class="mesa-de-regalos-item--img"
+                  alt="banorte"
+                />
+                <div>
+                  <p style="font-size: 3rem">CLABE</p>
+                  <p style="font-size: 3rem">24323234468411</p>
+                </div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Galeria completa -->
+      <section
+        id="complete-gallery-section"
+        class="section complete-gallery-section"
+      >
+        <div class="container">
+          <div class="title-container">
+            <h2 class="title--text">Nuestros momentos</h2>
+            <h2 class="subtitle--text">Compartimos con ustedes nuestro amor</h2>
+          </div>
+          <div style="display: flex; justify-content: center">
+            <div class="complete-gallery-image-container">
+              <div class="complete-gallery-image-container--item">
+                <img
+                  src="../static/images/horizontal/photo_4.jpg"
+                  class="complete-gallery-image-container--img"
+                  alt="photo"
+                />
+              </div>
+              <div class="complete-gallery-image-container--item">
+                <img
+                  src="../static/images/horizontal/photo_5.jpg"
+                  class="complete-gallery-image-container--img"
+                  alt="photo"
+                />
+              </div>
+              <div class="complete-gallery-image-container--item">
+                <img
+                  src="../static/images/vertical/photo_18.jpg"
+                  class="complete-gallery-image-container--img"
+                  alt="photo"
+                />
+              </div>
+              <div class="complete-gallery-image-container--item">
+                <img
+                  src="../static/images/vertical/photo_14.jpg"
+                  class="complete-gallery-image-container--img"
+                  alt="photo"
+                />
+              </div>
+              <div class="complete-gallery-image-container--item">
+                <img
+                  src="../static/images/horizontal/photo_8.jpg"
+                  class="complete-gallery-image-container--img"
+                  alt="photo"
+                />
+              </div>
+              <div class="complete-gallery-image-container--item">
+                <img
+                  src="../static/images/horizontal/photo_9.jpg"
+                  class="complete-gallery-image-container--img"
+                  alt="photo"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Galeria lineal horizontal -->
+      <section class="gallery-section" id="gallery-section-horizontal">
+        <img
+          src="../static/images/horizontal/photo_6.jpg"
+          class="gallery-img--horizontal"
+        />
+        <img
+          src="../static/images/horizontal/photo_4.jpg"
+          class="gallery-img--horizontal"
+        />
+        <img
+          src="../static/images/horizontal/photo_7.jpg"
+          class="gallery-img--horizontal"
+        />
+        <img
+          src="../static/images/horizontal/photo_8.jpg"
+          class="gallery-img--horizontal"
+        />
+      </section>
+      <!-- Codigo de vestimenta -->
+      <section class="section codigo-de-vestimenta">
+        <div class="container">
+          <div class="title-container">
+            <h2 class="title--text">Código de vestimenta</h2>
+            <p class="subtitle--text">Etiqueta</p>
+          </div>
+          <div class="vestimenta-container">
+            <div class="vestimenta--item">
+              <p class="vestimenta-img--title">Hombres</p>
+              <img
+                src="../static/images/codigo_hombre.png"
+                class="vestimenta-img"
+                alt="codigo hombre"
+              />
+              <p class="vestimenta-img--subtitle">Traje</p>
+            </div>
+            <div class="vestimenta--item">
+              <p class="vestimenta-img--title">Mujeres</p>
+              <img
+                src="../static/images/codigo_mujer.png"
+                class="vestimenta-img"
+                alt="codigo mujer"
+              />
+              <p class="vestimenta-img--subtitle">Vestido largo</p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Frase -->
+      <section class="section-phrase">
+        <div class="container">
+          <i class="fa-solid fa-quote-left phrase-quote-icon"></i>
+          <p class="phrase-text">
+            Mejores son dos que uno; porque tienen mejor paga de su trabajo.
+            Porque si cayeren, el uno levantará a su compañero; pero ¡ay del
+            solo! que cuando cayere, no habrá segundo que lo levante. También si
+            dos durmieren juntos, se calentarán mutuamente; mas ¿cómo se
+            calentará uno solo? Y si alguno prevaleciere contra uno, dos le
+            resistirán; y cordón de tres dobleces no se rompe pronto.
+          </p>
+          <p class="phrase-verse">Eclésiastes 4:9-12</p>
+          <!-- <h2 class="phrase-text">
+            El amor es lo más parecido a una guerra, y es la única guerra en que
+            es indiferente vencer o ser vencido, porque siempre se gana.
+          </h2> -->
+        </div>
+      </section>
+      <!-- Hashtag -->
+      <!-- <section class="section hashtag-section">
+        <div class="container">
+          <h2 class="hashtag-title">
+            En nuestra boda comparte tus fotos con nosotros, utiliza el hashtag
+          </h2>
+          <p class="hashtag-hashtag">#FRIDA_ISRA</p>
+        </div>
+      </section> -->
+      <!-- Sobre nosotros -->
+      <section>
+        <div>
+          <div></div>
+        </div>
+      </section>
+    </main>
+    <script>
+      function myFunction(x) {
+        let gallerySectionVertical = document.getElementById(
+          "gallery-section-vertical"
+        );
+        let gallerySectionHorizontal = document.getElementById(
+          "gallery-section-horizontal"
+        );
+        let completeGallerySection = document.getElementById(
+          "complete-gallery-section"
+        );
+        if (x.matches) {
+          // If media query matches
+          gallerySectionVertical.style.display = "none";
+          gallerySectionHorizontal.style.display = "none";
+          completeGallerySection.style.display = "";
+        } else {
+          gallerySectionVertical.style.display = "";
+          gallerySectionHorizontal.style.display = "";
+          completeGallerySection.style.display = "none";
+        }
+      }
+      var x = window.matchMedia("(max-width: 700px)");
+      x.addListener(myFunction);
+      myFunction(x);
+    </script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>

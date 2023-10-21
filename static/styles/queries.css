@@ -1,0 +1,315 @@
+/* rem and em do NOT depend on html font-size in media queries!! 
+Instead, 1 rem = 1em = 16px*/
+
+/*****************************/
+/* BELOW 84*16 = 1344px (Smaller desktops) */
+/*****************************/
+
+@media (max-width: 84em) {
+}
+
+/*****************************/
+/* BELOW 76.375*16 = 1222px (Smaller desktops) */
+/*****************************/
+
+@media (max-width: 76.375em) {
+  /* .hero-text-container h1 {
+    font-size: 7rem;
+  } */
+}
+
+/*****************************/
+/* BELOW 75*16 = 1200px (Landscape Tablets) */
+/*****************************/
+@media (max-width: 75em) {
+  html {
+    /* 9px / 16px = 56.25 */
+    font-size: 56.25%;
+  }
+  .countdown-clock--container {
+    gap: 4rem;
+  }
+  .location-img {
+    width: 50%;
+  }
+  .mesa-de-regalos--opciones {
+    margin-top: 4rem;
+  }
+  .vestimenta-img {
+    width: 20rem;
+    height: 30rem;
+  }
+  .phrase-quote-icon {
+    font-size: 5rem;
+  }
+  .section-phrase div {
+    width: 90%;
+  }
+}
+
+/*****************************/
+/* BELOW 68.75*16 = 1100px (Portrait Tablets) */
+/*****************************/
+@media (max-width: 68.75em) {
+  /* .hero-text-container h1 {
+    font-size: 7rem;
+  } */
+}
+
+/*****************************/
+/* BELOW 62.5*16 = 1000px (Portrait Tablets) */
+/*****************************/
+@media (max-width: 62.5em) {
+  .about-us-section-container {
+    gap: 4rem;
+  }
+  .about-us-text-container img {
+    height: 23rem;
+  }
+  .mesa-de-regalos--opciones {
+    gap: 0rem;
+  }
+  .mesa-de-regalos-item--img {
+    width: 25rem;
+  }
+  .section-phrase div {
+    width: 85%;
+  }
+}
+
+/*****************************/
+/* BELOW 59*16 = 944px (Portrait Tablets) */
+/*****************************/
+@media (max-width: 59em) {
+  html {
+    font-size: 50%;
+  }
+  /* .hero-text-container h1 {
+    font-size: 6.5rem;
+  } */
+}
+
+/*****************************/
+/* BELOW 50*16 = 800px (Portrait Tablets) */
+/*****************************/
+@media (max-width: 50em) {
+  /* .hero-text-container h1 {
+    font-size: 6rem;
+  } */
+  .about-us-section-container {
+    gap: 3rem;
+  }
+  .about-us-img {
+    width: 30rem;
+  }
+  .about-us-text-container {
+    /* width: 20rem; */
+    width: 40%;
+  }
+  .about-us-text-container img {
+    height: 20rem;
+  }
+  .location-info-container {
+    width: 100%;
+    padding: 2rem;
+    gap: 1rem;
+  }
+  .location-map-iframe {
+    width: 80%;
+  }
+  .section-phrase {
+    padding: 8rem 0 8rem 0;
+  }
+}
+
+/*****************************/
+/* BELOW 44*16 = 704px (Smaller Tablets) */
+/*****************************/
+
+@media (max-width: 44em) {
+  .about-us-section {
+    /* position: relative; */
+  }
+  .about-us-section-container {
+    /* display: block;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: 1fr; */
+    /* display: block; */
+    flex-direction: column;
+    gap: 0;
+  }
+  .about-us-img {
+    width: 90%;
+    height: 70rem;
+    object-fit: cover;
+  }
+  .about-us-text-container {
+    padding: 4rem;
+    width: 90%;
+    background-color: aliceblue;
+    gap: 2rem;
+  }
+  .countdown-clock--container {
+    gap: 3rem;
+  }
+  .countdown-clock--item {
+    width: 14rem;
+  }
+  .location-info-container {
+    flex-direction: column;
+    padding: 0;
+    width: 100%;
+    gap: 4rem;
+  }
+  .location-info-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 3rem;
+    width: 80%;
+  }
+  .location-info--address {
+    text-align: center;
+  }
+  .location-map-iframe {
+    width: 80%;
+  }
+
+  .mesa-de-regalos--opciones {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-content: center;
+    row-gap: 6rem;
+    margin-top: 8rem;
+  }
+  .mesa-de-regalos-item {
+    padding: 0 2rem;
+  }
+  .mesa-de-regalos-item--img-container {
+    justify-content: center;
+    gap: 2rem;
+    height: unset;
+  }
+  .banorte {
+    margin-top: 0;
+  }
+  .vestimenta-container {
+    gap: 0;
+  }
+  .vestimenta--item {
+    padding: 0rem;
+  }
+  .complete-gallery-image-container--item {
+    width: 30rem;
+    height: 30rem;
+  }
+}
+
+/*****************************/
+/* BELOW 36.375*16 = 582px (Big Phones) */
+/*****************************/
+
+@media (max-width: 36.375em) {
+  .about-us-img {
+    height: 40rem;
+    width: 100%;
+  }
+  .about-us-text-container {
+    width: 100%;
+  }
+  .countdown-clock--container {
+    gap: 2rem;
+  }
+  .countdown-clock--item {
+    width: 12rem;
+  }
+  .countdown-clock--item--date {
+    font-size: 3rem;
+  }
+  .countdown-clock--item p {
+    font-size: 1.6rem;
+  }
+  .location-map-iframe {
+    width: 100%;
+  }
+  .phrase-text {
+    text-align: center;
+    line-height: 2;
+    font-size: 2.4rem;
+  }
+  .phrase-quote-icon {
+    margin-bottom: 2rem;
+  }
+}
+
+/*****************************/
+/* BELOW 31.875*16 = 510px (Big Phones) */
+/*****************************/
+
+@media (max-width: 31.875em) {
+  .complete-gallery-image-container {
+    width: 6rem;
+  }
+  .complete-gallery-image-container--item {
+    width: 20rem;
+    height: 20rem;
+  }
+}
+
+/*****************************/
+/* BELOW 30*16 = 480px (Phones) */
+/*****************************/
+
+@media (max-width: 30em) {
+  .countdown-clock--container {
+    gap: 1rem;
+  }
+  .countdown-clock--item {
+    width: 10rem;
+    height: 10rem;
+  }
+  .countdown-clock--item--date {
+    font-size: 2.4rem;
+  }
+  .countdown-clock--item p {
+    font-size: 1.4rem;
+  }
+  .location-map-button button {
+    /* width: 80%; */
+  }
+}
+
+/*****************************/
+/* BELOW 25.875*16 = 414px (Phones) */
+/*****************************/
+
+@media (max-width: 25.875em) {
+  .countdown-clock--item {
+    width: 8rem;
+    height: 8rem;
+  }
+  .location-map-button button {
+    /* width: 100%; */
+  }
+  .location-info--address {
+  }
+  .phrase-text {
+    font-size: 2.1rem;
+  }
+}
+
+/*****************************/
+/* BELOW 23.125*16 = 370px (Phones) */
+/*****************************/
+
+@media (max-width: 23.125em) {
+  .complete-gallery-image-container--item {
+    width: 16rem;
+    height: 16rem;
+  }
+  .phrase-text {
+    font-size: 2rem;
+  }
+}
